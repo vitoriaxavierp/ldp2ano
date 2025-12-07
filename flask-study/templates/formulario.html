@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block titulo %}
+    Formulario
+{% endblock %}
+{% block conteudo %}
+    <form action="" method="post">
+        nome: <input type="text" name="nomeForm" id="">
+        email: <input type="email" name="emailForm" id="">
+        <input type="submit" value="Enviar">
+    </form>
+
+    <p>Seu nome é {{ nome }}</p>
+    <p>Seu email é {{ email }}</p>
+{% endblock %}

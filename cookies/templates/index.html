@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Teste Cookies</title>
+</head>
+<body>
+
+    {% if usuario %}
+        <h1>Bem-vindo de volta, {{ usuario }}!</h1>
+        <p>O cookie está ativo.</p>
+        <a href="/delete-cookie">Apagar Cookie</a>
+    {% else %}
+        <h1>Olá, Visitante.</h1>
+        <p>Nenhum cookie encontrado.</p>
+        <a href="/set-cookie">Criar Cookie</a>
+    {% endif %}
+
+</body>
+</html>

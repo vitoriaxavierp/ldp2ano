@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Notas</title>
+</head>
+<body>
+    <h1>Lançamento de Notas</h1>
+
+    <form action="/calcular" method="POST">
+        
+        <label>Nome do Aluno:</label><br>
+        <input type="text" name="nome" required><br><br>
+
+        <label>Nota 1:</label><br>
+        <input type="number" name="n1" step="0.1" required><br><br>
+
+        <label>Nota 2:</label><br>
+        <input type="number" name="n2" step="0.1" required><br><br>
+
+        <button type="submit">Calcular Média</button>
+    </form>
+
+</body>
+</html>

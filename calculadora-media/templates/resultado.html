@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado</title>
+</head>
+<body>
+    <h1>Boletim</h1>
+
+    <p>Aluno: <strong>{{ nome }}</strong></p>
+    <p>Média Final: <strong>{{ media }}</strong></p>
+    
+    <p>Situação: 
+        {% if status == 'Aprovado' %}
+            <span style="color: green;">{{ status }}</span>
+        {% else %}
+            <span style="color: red;">{{ status }}</span>
+        {% endif %}
+    </p>
+
+    <a href="/">Voltar</a>
+</body>
+</html>

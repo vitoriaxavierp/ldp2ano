@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados da Sessão</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    <style>
+        .user-data {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .user-data p {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            color: #333;
+            word-wrap: break-word;
+        }
+        .user-data span {
+            font-weight: bold;
+            color: #da347c;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Último Cadastro na Sessão</h2>
+        
+        {% if ultimo_usuario_sessao %}
+            <div class="user-data">
+                <p>
+                    <span>Nome de Usuário:</span> {{ ultimo_usuario_sessao.username }}<br>
+                    <span>E-mail:</span> {{ ultimo_usuario_sessao.email }}<br>
+                    <span>Senha:</span> {{ ultimo_usuario_sessao.password }}
+                </p>
+            </div>
+        {% else %}
+            <p>Nenhum cadastro encontrado nesta sessão.</p>
+            <p>Faça um cadastro na página principal para ver os dados aqui.</p>
+        {% endif %}
+        <br>
+        <a href="{{ url_for('formulario') }}" class="button-link">Voltar ao Cadastro</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}{% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+        <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/vitoria">Vitoria</a></li>
+            <li><a href="/formulario">formulario</a></li>
+        </ul>
+    </nav>
+    {% endblock %}
+    {% block conteudo %}
+    {% endblock %}
+</body>
+</html>

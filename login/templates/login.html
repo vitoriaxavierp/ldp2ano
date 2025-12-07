@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Minimalista</title>
+    <style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #eceffd, #f7f7f7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    color: #2d2d2d;
+}
+
+
+.login-container {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    padding: 40px 35px;
+    border-radius: 18px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.07);
+    width: 100%;
+    max-width: 420px;
+    animation: fadeIn 0.5s ease forwards;
+    position: relative;
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+.login-container::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 160px;
+    height: 160px;
+    background: radial-gradient(circle at center, #ff5c6a, #b4004e);
+    opacity: 0.12;
+    border-radius: 50%;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #1e1e28;
+}
+
+
+p {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4a4a4a;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 6px;
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 1px solid #d7dbea;
+    background: #f7f8fc;
+    font-size: 1rem;
+    transition: 0.25s;
+}
+
+input:focus {
+    border-color: #ff5c6a;
+    background: white;
+    box-shadow: 0 0 6px #b4004e;
+    outline: none;
+}
+
+.input-icon {
+    position: absolute;
+    right: 15px;
+    top: 39px;
+    color: #a4abc2;
+    font-size: 1.1rem;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #ff5c6a, #b4004e);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    box-shadow: 0 8px 20px #b4004e;
+    transform: translateY(-2px);
+}
+
+/* Links */
+.links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 18px;
+}
+
+.links a {
+    font-size: 0.85rem;
+    color: #ff5c6a;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.links a:hover {
+    color: #473df1;
+    text-decoration: underline;
+}
+
+.divider {
+    margin: 25px 0;
+    text-align: center;
+    color: #7b7f92;
+    font-size: 0.85rem;
+    position: relative;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background: #d9d9e6;
+}
+
+.divider::before { left: 0; }
+.divider::after { right: 0; }
+
+
+.social-login {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+}
+
+.social-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid #dfdff3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.25s;
+    font-size: 1.2rem;
+}
+
+.social-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+}
+
+
+.google-icon::before {
+    content: "G";
+    font-weight: 700;
+    color: #db4437;
+}
+
+.facebook-icon::before {
+    content: "f";
+    font-weight: 700;
+    color: #4267B2;
+}
+
+.twitter-icon::before {
+    content: "𝕏";
+    font-size: 1.1rem;
+    color: #000;
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 30px 20px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        {% if request.args.get('mensagem') %}
+            <p class="erro">{{ request.args.get('mensagem') }}</p>
+        {% endif %}
+
+        <form action="/logar" method="post">
+            <div class="form-group">
+                <label for="username">Nome de usuário</label>
+                <input type="text" id="username" name="username" placeholder="seu_usuario" required>
+                <span class="input-icon">👤</span>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" placeholder="••••••••" required>
+                <span class="input-icon">🔒</span>
+            </div>
+            
+            <button type="submit">Entrar</button>
+            
+            <div class="links">
+                <a href="#">Esqueceu a senha?</a>
+                <a href="#">Criar conta</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

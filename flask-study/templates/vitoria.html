@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block titulo %}
+    Vitoria
+{% endblock %}
+{% block conteudo %}
+    <h1>Olá, meu nome é {{ dados.nome }}</h1>
+    <h2>Eu tenho {{ dados.idade }} anos</h2>
+    <h3>Curso {{ dados.curso }} no {{ dados.escola }} </h3>
+    <h4>Meu nome tem {{ dados.nome | length }} letras</h4>
+
+    {% if idade >= 18 %}
+        <p>Eu sou maior de idade</p>
+    {% else %}
+        <p>Eu sou menor de idade</p>
+    {% endif %}
+
+    {% for habilidade in habilidades%}
+        <li>{{ habilidade }}</li>
+    {% endfor %}
+{% endblock %}
